@@ -1,0 +1,13 @@
+.navbar {
+    padding: 50px;
+    background-color: #2F4F4F;
+}
+
+.navbar__list {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar__item-link {
+    color: #fff;
+}
