@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { randomDose } from '../utils/random.js'
+import { getRandomDose } from '../utils/random.js'
 import '../styles/dose.css'
 
 const Dose = () => {
@@ -8,13 +8,13 @@ const Dose = () => {
 
     const showDose = (event) => {
         event.preventDefault();
-        setDose(randomDose(event.target[0].value));
+        setDose(getRandomDose(event.target[0].value));
     };
 
     return (
         <div className='dose'>
         <h1 className='dose__title'>{title}</h1>
-        <p className='dose__desc'>Can't decide how much drinks do you want? <br /> Enter a number and get decision.</p>
+        <p className='dose__desc'>Can't decide how much drinks do you want? <br /> Enter a number and get dose.</p>
         <form className='dose__form' onSubmit={showDose}>
             <input className='dose__input' placeholder='How much drinks do you want?' type="number"></input>
             <div>You should drink <strong>{dose}</strong> {dose <= 1 ? 'drink' : 'drinks'}</div>

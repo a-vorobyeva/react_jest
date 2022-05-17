@@ -6,13 +6,17 @@
     margin: 80px 0;
   }
   
+  .main__title-init {
+    color: #2F4F4F;
+  }
+
   .main__pic {
     width: 100%;
   }
   
   .main__pic-img {
     max-width: 100%;
-    height: 50vh;
+    height: 40vh;
     object-fit: cover;
   }
   
@@ -20,7 +24,20 @@
     margin: 20px 0;
   }
   
-  .main__btn {
+  .main__btns {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .main__btn-yes {
     background-color: #008000;
   }
   
+  .main__btn-no {
+    background-color: #800000;
+  }
+  
+  .main__btn-dn {
+    background-color: #ff00e3;
+  }

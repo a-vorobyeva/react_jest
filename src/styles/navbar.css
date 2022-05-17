@@ -5,7 +5,7 @@
 
 .navbar__list {
     display: flex;
-    gap: 20px;
+    gap: 100px;
 }
 
 .navbar__item-link {

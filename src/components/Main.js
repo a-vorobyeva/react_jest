@@ -1,17 +1,24 @@
 import { useEffect, useState } from 'react';
-import { getRandomAnswer } from '../utils/api.js'
+import { getRandomAnswer, getAnswer } from '../utils/api.js'
 import '../styles/main.css';
 
 const Main = () => {
   const title = 'Have a drink?';
-
   const [answer, setAnswer] = useState({});
 
-  const getAnswerRespose = async () => {
-      const data = await getRandomAnswer();
-      setAnswer(data)
+  const getAnswerRespose = async (decision = 'random') => {
+    let data = await getRandomAnswer();
+
+    if (decision === 'random') {
+      data = await getRandomAnswer();
+    } else {
+      data = await getAnswer(decision);
+    }
+      
+    setAnswer(data);
   };
   
+  // FIXME: dependancy
   useEffect(() => getAnswerRespose, []);
   
   return (
@@ -22,15 +29,23 @@ const Main = () => {
         answer.image ?
         <figure className='main__pic'>
           <img className='main__pic-img' src={answer.image} alt={answer.answer} />
-          <figcaption className='main__pic-caption'>{answer.answer}</figcaption>
+          <figcaption className='main__pic-caption'>{answer.answer.toUpperCase()}</figcaption>
         </figure>
         :
-        <h2 className='main__title-init'>I am not sure</h2>
+        <h2 className='main__title-init'>Not sure</h2>
       }
-          
-      <button className='main__btn' onClick={getAnswerRespose}>
-          Decide
-      </button>
+      
+      <div className='main__btns'>
+        <button className='main__btn main__btn-yes' onClick={() => getAnswerRespose('yes')}>
+            Yes
+        </button>
+        <button className='main__btn main__btn-no' onClick={() => getAnswerRespose('no')}>
+            No
+        </button>
+        <button className='main__btn main__btn-dn' onClick={() => getAnswerRespose()}>
+            Make decision for me
+        </button>
+      </div>
       </div>
   )
 }

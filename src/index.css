@@ -29,6 +29,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: #808080;
+}
+
 button {
   width: 30%;
   height: 100px;
