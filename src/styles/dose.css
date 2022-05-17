@@ -27,6 +27,17 @@
     border-radius: 10px;
 }
 
-.dose__btn {
+.dose__btns {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.dose__btn-decide {
     background-color: #800000;
+}
+
+.dose__btn-storage {
+    background-color: #008000;
 }
