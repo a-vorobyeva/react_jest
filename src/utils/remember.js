@@ -9,7 +9,7 @@ export const rememberDose = (dose) => {
 
     localStorage.setItem('dose', dose);
 
-    console.log(diagnosis);
+    alert(diagnosis);
 
     return diagnosis;
 }

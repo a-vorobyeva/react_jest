@@ -20,10 +20,11 @@ describe('create mock', () => {
         // in case of promise response use mockFn.mockResolvedValue/mockFn.mockResolvedValueOnce or mockFn.mockRejectedValue/mockFn.mockRejectedValueOnce
         expect(spyMathRandom()).toBe(5);
         expect(spyMathRandom()).toBe(9);
+        expect(spyMathRandom()).toBe(9);
     
         const dose = getRandomDose(5);
     
-        expect(spyMathRandom).toHaveBeenCalledTimes(3)
+        expect(spyMathRandom).toHaveBeenCalledTimes(4)
         expect(dose).toBe(45)
     });
 
