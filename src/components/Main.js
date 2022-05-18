@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getRandomAnswer, getAnswer } from '../utils/api.js'
 import '../styles/main.css';
 
@@ -17,9 +17,6 @@ const Main = () => {
       
     setAnswer(data);
   };
-  
-  // FIXME: dependancy
-  useEffect(() => getAnswerRespose, []);
   
   return (
     <div className="main">
