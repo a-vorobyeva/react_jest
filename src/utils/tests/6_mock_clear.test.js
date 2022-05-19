@@ -25,24 +25,25 @@ describe('clear mocks', () => {
         expect(result).toEqual(dummy_answer.data);
         expect(result).toEqual(dummy_answer.data);
 
-        // returns original implementation (like .mockRestore(); NOTE: just for mockes created with spyOn!)
+        // returns original implementation (like .mockRestore(); NOTE: just for mocks created with spyOn!)
         jest.restoreAllMocks();
 
         // const resultOriginal = await getRandomAnswer();
         // console.log('resultOriginal', resultOriginal);
     });
 
-    test('isolate module', () => {
+    test('should isolate module', () => {
         let realModule;
         
-        jest.isolateModules(() => {
+        jest.isolateModules(async () => {
             realModule = require('axios');
-            // console.log('module', realModule);
         });
 
-        let mockModule = require('axios');
-        mockModule = jest.fn(() => 'overwritten module copy');
+        jest.doMock('axios');
+        const mockedModule = require('axios');
+        mockedModule.get.mockImplementation(jest.fn(() => 'overwritten module copy'));
 
-        expect(mockModule()).toBe('overwritten module copy')
-    })
+        expect(realModule.get('test')).not.toBe('overwritten module copy')
+        expect(mockedModule.get('test')).toBe('overwritten module copy')
+    });
 })
